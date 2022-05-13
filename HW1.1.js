@@ -23,7 +23,7 @@
 
 'use strict';
 
-const numberOfFilms = +prompt('How much movies have you already sean?', '18');
+const numberOfFilms = +prompt('How much movies have you already seen?', '18');
 
 const personalMovieDB = {
     count: numberOfFilms,
