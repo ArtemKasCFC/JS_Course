@@ -34,7 +34,7 @@ const personalMovieDB = {
 };
 
 
-if (personalMovieDB.count < 10 && personalMovieDB >= 0) {
+if (personalMovieDB.count < 10 && personalMovieDB.count >= 0) {
     console.log('A little movies have been watched :(');
 } else if (personalMovieDB.count >= 10 && personalMovieDB.count <= 30) {
     console.log('Ha ha classic');
