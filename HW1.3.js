@@ -13,18 +13,33 @@ P.S. Функции вызывать не обязательно*/
 
 'use strict';
 
-// Код возьмите из предыдущего домашнего задания
 
 let numberOfFilms;
 
-
 function start() {
-    numberOfFilms = prompt('How much movies have you already seen?', '18');
-    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
-        numberOfFilms = prompt('How much movies have you already seen?', '18');
+    numberOfFilms = +prompt('How many movies have you already watched?', '18');
+
+    while (numberOfFilms == null || numberOfFilms == '' || isNaN(numberOfFilms)) {
+        numberOfFilms = +prompt('How many movies have you already watched?', '18');
     }
 }
+
 start();
+
+
+function detectPersonalLevel() {
+    if (numberOfFilms >= 0 && numberOfFilms < 10) {
+        console.log('Too little movies have been watched');
+    } else if (numberOfFilms >= 10 && numberOfFilms <= 30) {
+        console.log('You are a classic viewer');
+    } else if (numberOfFilms > 30) {
+        console.log('You are a cinephile');
+    } else {
+        console.log('Error');
+    }
+}
+
+detectPersonalLevel();
 
 
 const personalMovieDB = {
@@ -36,44 +51,42 @@ const personalMovieDB = {
 };
 
 
-function showMyDB(DB) {
-    if (DB.privat == false) {
-        console.log(DB);
+function showMyDB() {
+    if (personalMovieDB.privat === false) {
+        console.log(personalMovieDB);
     }
 }
-showMyDB(personalMovieDB);
+
+showMyDB();
 
 
 function writeYourGenres() {
-    for (let ind = 0; ind < 3; ind++) {
-        personalMovieDB.genres[ind] = prompt(`${ind + 1} What is your favorite genre?`);
-    }
-}
-writeYourGenres();
+    for (let i = 0; i < 3; i++) {
+        personalMovieDB.genres[i] = prompt(`Your favorite genre at number ${i+1}`, 'Comedy');
 
-function remeberMyFilms() {
-    for (let i = 0; i < 2; i++) {
-        let questionOne = prompt('One of the last watched movies?', 'Nobody'),
-            questionTwo = prompt('What is grade?', '8');
-        if (questionOne != null && questionTwo != null && questionOne != '' && questionTwo != '' && questionOne.length < 50) {
-            personalMovieDB.movies[questionOne] = questionTwo;
-        } else {
+        if (personalMovieDB.genres[i] == '' || personalMovieDB.genres[i] == null) {
             i--;
         }
     }
 }
-remeberMyFilms();
+
+writeYourGenres();
 
 
-function detectPersonalLevel() {
-    if (personalMovieDB.count < 10 && personalMovieDB.count >= 0) {
-        console.log('A little movies have been watched :(');
-    } else if (personalMovieDB.count >= 10 && personalMovieDB.count <= 30) {
-        console.log('Ha ha classic');
-    } else if (personalMovieDB.count > 30) {
-        console.log('You really like movies');
-    } else {
-        console.log('Error');
+let questionOne,
+    questionTwo;
+
+function remeberMyFilms() {
+    for (let i = 0; i < 2; i++) {
+        questionOne = prompt('One of the last watched movies?', 'Nobody'),
+            questionTwo = prompt('What is your grade?', '8');
+
+        if (!questionOne || !questionTwo || questionOne.length > 50) {
+            i--;
+        } else {
+            personalMovieDB.movies[questionOne] = questionTwo;
+        }
     }
 }
-detectPersonalLevel();
+
+remeberMyFilms();
