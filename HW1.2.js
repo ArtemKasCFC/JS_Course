@@ -14,15 +14,18 @@
 
 'use strict';
 
-// Код возьмите из предыдущего домашнего задания
 
-let numberOfFilms;
+const numberOfFilms = +prompt('How many movies have you already watched?', '18');
 
-
-do {
-    numberOfFilms = +prompt('How much movies have you already seen?', '18');
+if (numberOfFilms >= 0 && numberOfFilms < 10) {
+    console.log('Too little movies have been watched');
+} else if (numberOfFilms >= 10 && numberOfFilms <= 30) {
+    console.log('You are a classic viewer');
+} else if (numberOfFilms > 30) {
+    console.log('You are a cinephile');
+} else {
+    console.log('Error');
 }
-while (numberOfFilms == false);
 
 
 const personalMovieDB = {
@@ -34,50 +37,46 @@ const personalMovieDB = {
 };
 
 
-if (personalMovieDB.count < 10 && personalMovieDB.count >= 0) {
-    console.log('A little movies have been watched :(');
-} else if (personalMovieDB.count >= 10 && personalMovieDB.count <= 30) {
-    console.log('Ha ha classic');
-} else if (personalMovieDB.count > 30) {
-    console.log('You really like movies');
-} else {
-    console.log('Error');
-}
+let questionOne,
+    questionTwo;
 
-// With for
+
+// by For
 for (let i = 0; i < 2; i++) {
-    let questionOne = prompt('One of the last watched movies?', 'Nobody'),
-        questionTwo = prompt('What is grade?', '8');
-    if (questionOne != null && questionTwo != null && questionOne != '' && questionTwo != '' && questionOne.length < 50) {
-        personalMovieDB.movies[questionOne] = questionTwo;
-    } else {
+    questionOne = prompt('One of the last watched movies?', 'Nobody'),
+    questionTwo = prompt('What is your grade?', '8');
+    
+    if (!questionOne || !questionTwo || questionOne.length > 50) {
         i--;
+    } else {
+        personalMovieDB.movies[questionOne] = questionTwo;
     }
 }
 
-// With While
-// let i = 0;
-// while (i < 2) {
-//     let questionOne = prompt('One of the last watched movies?', 'Nobody'),
-//         questionTwo = prompt('What is grade?', '8');
-//         if (questionOne != null && questionTwo != null && questionOne != '' && questionTwo != '' && questionOne.length < 50) {
-//             personalMovieDB.movies[questionOne] = questionTwo;
-//             i++;
-//         } else {
-//             continue;
-//         }
+// by While
+// let j = 0;
+// while (j < 2) {
+//     questionOne = prompt('One of the last watched movies?', 'Nobody'),
+//     questionTwo = prompt('What is your grade?', '8');
+//     j++;
+//     if (!questionOne || !questionTwo || questionOne.length > 50) {
+//         j--;
+//     } else {
+//         personalMovieDB.movies[questionOne] = questionTwo;
+//     }
 // }
 
-// With Do While
-// let i = 0;
+
+// by Do While
+// let j = 0;
 // do {
-//     let questionOne = prompt('One of the last watched movies?', 'Nobody'),
-//         questionTwo = prompt('What is grade?', '8');
-//         if (questionOne != null && questionTwo != null && questionOne != '' && questionTwo != '' && questionOne.length < 50) {
-//             personalMovieDB.movies[questionOne] = questionTwo;
-//             i++;
-//         } else {
-//             continue;
-//         }
+//     questionOne = prompt('One of the last watched movies?', 'Nobody'),
+//     questionTwo = prompt('What is your grade?', '8');
+//     j++;
+//     if (!questionOne || !questionTwo || questionOne.length > 50) {
+//         j--;
+//     } else {
+//         personalMovieDB.movies[questionOne] = questionTwo;
+//     }
 // }
-// while (i < 2);
+// while (j < 2);
