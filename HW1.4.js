@@ -12,9 +12,8 @@
 при помощи метода forEach вывести в консоль сообщения в таком виде:
 "Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
 
-'use strict';
 
-// Код возьмите из предыдущего домашнего задания
+'use strict';
 
 
 const personalMovieDB = {
@@ -24,71 +23,55 @@ const personalMovieDB = {
     genres: [],
     privat: false,
     start: function () {
-        personalMovieDB.count = prompt('How much movies have you already seen?', '18');
-        while (personalMovieDB.count == '' || personalMovieDB.count == null || isNaN(personalMovieDB.count)) {
-            personalMovieDB.count = prompt('How much movies have you already seen?', '18');
+        personalMovieDB.count = +prompt('How many movies have you already watched?', '18');
+
+        while (personalMovieDB.count == null || personalMovieDB.count == '' || isNaN(personalMovieDB.count)) {
+            personalMovieDB.count = +prompt('How many movies have you already watched?', '18');
         }
-    },
-    showMyDB: function (DB) {
-        if (DB.privat == false) {
-            console.log(DB);
-        }
-    },
-    writeYourGenres: function () {
-        for (let ind = 0; ind < 3; ind++) {
-            let genre = prompt(`${ind + 1} What is your favorite genre?`);
-            if (genre == null || genre == '') {
-                ind--;
-            } else {
-                personalMovieDB.genres[ind] = genre;
-            }
-        }
-        personalMovieDB.genres.forEach((item, index) => {
-            console.log(`Favorite genre #${index + 1} - it's ${item}`);
-        });
     },
     remeberMyFilms: function () {
         for (let i = 0; i < 2; i++) {
-            let questionOne = prompt('One of the last watched movies?', 'Nobody'),
-                questionTwo = prompt('What is grade?', '8');
-            if (questionOne != null && questionTwo != null && questionOne != '' && questionTwo != '' && questionOne.length < 50) {
-                personalMovieDB.movies[questionOne] = questionTwo;
-            } else {
+            const questionOne = prompt('One of the last watched movies?', 'Nobody'),
+                questionTwo = prompt('What is your grade?', '8');
+
+            if (!questionOne || !questionTwo || questionOne.length > 50) {
                 i--;
+            } else {
+                personalMovieDB.movies[questionOne] = questionTwo;
             }
         }
     },
+    writeYourGenres: function () {
+        for (let i = 0; i < 3; i++) {
+            personalMovieDB.genres[i] = prompt(`Your favorite genre at number ${i+1}`, 'Comedy');
+
+            if (personalMovieDB.genres[i] == '' || personalMovieDB.genres[i] == null) {
+                i--;
+            }
+        }
+        personalMovieDB.genres.forEach((key, i) => console.log(`Favorite genre #${i+1} is ${key}`));
+    },
+    showMyDB: function () {
+        if (personalMovieDB.privat === false) {
+            console.log(personalMovieDB);
+        }
+    },
     detectPersonalLevel: function () {
-        if (personalMovieDB.count < 10 && personalMovieDB.count >= 0) {
-            console.log('A little movies have been watched :(');
+        if (personalMovieDB.count >= 0 && personalMovieDB.count < 10) {
+            console.log('Too little movies have been watched');
         } else if (personalMovieDB.count >= 10 && personalMovieDB.count <= 30) {
-            console.log('Ha ha classic');
+            console.log('You are a classic viewer');
         } else if (personalMovieDB.count > 30) {
-            console.log('You really like movies');
+            console.log('You are a cinephile');
         } else {
             console.log('Error');
         }
     },
     toggleVisibleMyDB: function () {
-        if (personalMovieDB.privat == false) {
+        if (personalMovieDB.privat === false) {
             personalMovieDB.privat = true;
         } else {
             personalMovieDB.privat = false;
         }
     }
 };
-
-// With .split()
-// writeYourGenres: function () {
-//     for (let ind = 0; ind < 1; ind++) {
-//         let genres = prompt(`What is your favorite genres?`);
-//         if (genres == null || genres == ''){
-//             ind--;
-//         } else {
-//             personalMovieDB.genres = genres.split(', ');
-//         }
-//     }
-//     personalMovieDB.genres.forEach((item, index) => {
-//             console.log(`Favorite genre #${index + 1} - it's ${item}`);
-//         });
-// },
