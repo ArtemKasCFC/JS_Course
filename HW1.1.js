@@ -56,10 +56,12 @@ const personalMovieDB = {
     privat: false
 };
 
-const questionOne = prompt('One of the last watched movies?', 'Nobody'),
-    questionTwo = prompt('What is your grade?', '8'),
-    questionOne_2 = prompt('One of the last watched movies?', 'Stalker'),
-    questionTwo_2 = prompt('What is your grade?', '9');
+const questionOne = prompt("What's the last movie you watched?", 'Nobody'),
+    questionTwo = prompt('How would you rate it?', '8'),
+    questionOne_2 = prompt("What's the last movie you watched?", 'Stalker'),
+    questionTwo_2 = prompt('How would you rate it?', '9');
 
 personalMovieDB.movies[questionOne] = questionTwo;
 personalMovieDB.movies[questionOne_2] = questionTwo_2;
+
+console.log(personalMovieDB)

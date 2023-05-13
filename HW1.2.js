@@ -43,8 +43,8 @@ let questionOne,
 
 // by For
 for (let i = 0; i < 2; i++) {
-    questionOne = prompt('One of the last watched movies?', 'Nobody'),
-    questionTwo = prompt('What is your grade?', '8');
+    questionOne = prompt("What's the last movie you watched?", 'Nobody'),
+    questionTwo = prompt('How would you rate it?', '8');
     
     if (!questionOne || !questionTwo || questionOne.length > 50) {
         i--;
@@ -56,8 +56,8 @@ for (let i = 0; i < 2; i++) {
 // by While
 // let j = 0;
 // while (j < 2) {
-//     questionOne = prompt('One of the last watched movies?', 'Nobody'),
-//     questionTwo = prompt('What is your grade?', '8');
+//     questionOne = prompt("What's the last movie you watched?", 'Nobody'),
+//     questionTwo = prompt('How would you rate it?', '8');
 //     j++;
 //     if (!questionOne || !questionTwo || questionOne.length > 50) {
 //         j--;
@@ -70,8 +70,8 @@ for (let i = 0; i < 2; i++) {
 // by Do While
 // let j = 0;
 // do {
-//     questionOne = prompt('One of the last watched movies?', 'Nobody'),
-//     questionTwo = prompt('What is your grade?', '8');
+//     questionOne = prompt("What's the last movie you watched?", 'Nobody'),
+//     questionTwo = prompt('How would you rate it?', '8');
 //     j++;
 //     if (!questionOne || !questionTwo || questionOne.length > 50) {
 //         j--;

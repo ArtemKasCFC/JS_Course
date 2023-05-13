@@ -24,27 +24,17 @@ const movieDB = {
     ]
 };
 
-const promoAdv = document.querySelectorAll('.promo__adv img')
+document.querySelectorAll(".promo__adv img").forEach(item => item.remove())
 
-promoAdv.forEach(value => value.remove())
+document.querySelector(".promo__genre").textContent = "ДРАМА"
 
-
-const promoGenre = document.querySelector('.promo__genre')
-
-promoGenre.textContent = 'драма'
-
-
-const promoBg = document.querySelector('.promo__bg')
-
-promoBg.style.backgroundImage = "url('img/bg.jpg')"
-
-
-const promoList = document.querySelector('.promo__interactive-list')
-
-promoList.innerHTML = ''
+document.querySelector(".promo__bg").style.backgroundImage = "url('img/bg.jpg')"
 
 movieDB.movies.sort()
 
-movieDB.movies.forEach((movie, ind) => promoList.innerHTML += `<li class="promo__interactive-item">${ind +1} - ${movie}
-<div class="delete"></div>
-</li>`)
+document.querySelectorAll(".promo__interactive-item").forEach((item, ind) => {
+    item.textContent = `${ind+1} ${movieDB.movies[ind]}`
+})
+
+
+

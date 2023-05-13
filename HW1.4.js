@@ -12,7 +12,6 @@
 при помощи метода forEach вывести в консоль сообщения в таком виде:
 "Любимый жанр #(номер по порядку, начиная с 1) - это (название из массива)"*/
 
-
 'use strict';
 
 
@@ -31,8 +30,8 @@ const personalMovieDB = {
     },
     remeberMyFilms: function () {
         for (let i = 0; i < 2; i++) {
-            const questionOne = prompt('One of the last watched movies?', 'Nobody'),
-                questionTwo = prompt('What is your grade?', '8');
+            const questionOne = prompt("What's the last movie you watched?", 'Nobody'),
+                questionTwo = prompt('How would you rate it?', '8');
 
             if (!questionOne || !questionTwo || questionOne.length > 50) {
                 i--;
